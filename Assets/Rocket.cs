@@ -10,7 +10,8 @@ public class Rocket : MonoBehaviour
     
     //With the [SerializeField] we're able to see the variable in the Unity Inspector
     [SerializeField] float rcsThrust = 100f;
-    [SerializeField] float mainThrust = 25f;
+    [SerializeField] float mainThrust = 100f;
+    [SerializeField] float levelLoadDelay = 2f;
     //Audio resourses
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip death;
@@ -71,7 +72,7 @@ public class Rocket : MonoBehaviour
         audioSource.Stop();
         audioSource.PlayOneShot(death);
         deathParticles.Play();
-        Invoke("LoadFirstLevel", 5f);
+        Invoke("LoadFirstLevel", levelLoadDelay);
     }
 
     private void StartSuccessSequence()
@@ -81,7 +82,7 @@ public class Rocket : MonoBehaviour
         audioSource.PlayOneShot(success);
         successParticles.Play();
         print("Hit finish");
-        Invoke("LoadNextLevel", 5f);
+        Invoke("LoadNextLevel", levelLoadDelay);
 
     }
 
@@ -108,7 +109,7 @@ public class Rocket : MonoBehaviour
 
     private void ApplyThrust()
     {
-        rigidBody.AddRelativeForce(Vector3.up * mainThrust);
+        rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
         if (!audioSource.isPlaying)
             audioSource.PlayOneShot(mainEngine);
         mainEngineParticles.Play();
