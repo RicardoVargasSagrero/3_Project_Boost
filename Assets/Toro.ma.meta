@@ -4,11 +4,20 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: pTorus1
+    100004: pTorus2
     400000: //RootNode
+    400002: pTorus1
+    400004: pTorus2
     2100000: lambert1
     2300000: //RootNode
+    2300002: pTorus1
+    2300004: pTorus2
     3300000: //RootNode
+    3300002: pTorus1
+    3300004: pTorus2
     4300000: pTorus1
+    4300002: pTorus2
   externalObjects: {}
   materials:
     importMaterials: 1
